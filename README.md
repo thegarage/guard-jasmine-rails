@@ -4,15 +4,19 @@ Guard Plugin for running Jasmine Javascript tests via the [JasmineRails gem](htt
 
 ## Installation
 
+Install gem via rubygems:
+```bash
+$ gem install guard-jasmine-rails
 ```
-# Gemfile
-gem 'jasmine-rails'
-gem 'guard-jasmine-rails'
+
+Setup your Guardfile with the proper configuration with:
+```bash
+$ guard init jasmine-rails
 ```
 
 ## Usage
 
-```
+```ruby
 # Guardfile
 guard 'jasmine-rails' do
   watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
@@ -25,7 +29,8 @@ end
 ### Options
 
 configure the plugin by passing options into the guard initializer. ex:
-```
+
+```ruby
 # example to configure plugin
 guard 'jasmine-rails', all_on_start: false do
 end
@@ -34,10 +39,9 @@ end
 #### `all_on_start` (default true)
 toggle running all Jasmine tests when Guard is first started.
 
+
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Patches are always welcome and thank you to all [project contributors](https://github.com/thegarage/guard-jasmine-rails/graphs/contributors)!
+
+Interested in contributing?  Review the project [contribution guidelines](CONTRIBUTING.md) and get started!

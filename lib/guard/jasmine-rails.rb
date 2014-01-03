@@ -7,6 +7,8 @@ module Guard
     DEFAULTS = {
       all_on_start: true
     }
+    LOG_PREFIX = 'Guard::JasmineRails'
+    NOTIFICATION_TITLE = 'Jasmine results'
 
     def initialize(watchers = [], options = {})
       super watchers, DEFAULTS.merge(options)
@@ -51,14 +53,24 @@ module Guard
       log "Running: #{command}", :debug
       success = system(command)
       if success
-        log 'Success!'
+        log 'No failures detected'
+        notify 'All specs passed.', :success
       else
         log "Error running specs", :error
+        notify 'Error running specs.', :failed
       end
     end
 
     def log(message, level = :info)
-      UI.send(level, "Guard::JasmineRails #{message}")
+      UI.send(level, [LOG_PREFIX, message].join(' '))
+    end
+
+    def notify(message, type = :success)
+      priority = {
+        failed:   2,
+        success: -2
+      }[type]
+      ::Guard::Notifier.notify(message, title: NOTIFICATION_TITLE , image: type, priority: priority)
     end
   end
 end

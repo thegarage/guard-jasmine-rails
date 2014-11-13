@@ -1,9 +1,9 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 require 'guard/watcher'
 
 module Guard
-  class JasmineRails < Guard
+  class JasmineRails < Plugin
     DEFAULTS = {
       all_on_start: true
     }

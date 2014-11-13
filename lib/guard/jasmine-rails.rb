@@ -10,8 +10,8 @@ module Guard
     LOG_PREFIX = 'Guard::JasmineRails'
     NOTIFICATION_TITLE = 'Jasmine results'
 
-    def initialize(watchers = [], options = {})
-      super watchers, DEFAULTS.merge(options)
+    def initialize(options = {})
+      super DEFAULTS.merge(options)
     end
 
     def start

@@ -40,7 +40,7 @@ module Guard
     # parse the outermost describe block from a Jasmine spec file
     # returns nil if no describe block is found
     def spec_description(path)
-      File.read(path).scan(/describe\(['"](.+)['"]\,/).flatten.first
+      File.read(path).scan(/describe.+?['"]([^'"]+)/).flatten.first
     end
 
     def run(spec_filter = nil)
